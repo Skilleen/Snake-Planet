@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/picture"
+            android:layout_weight="0.18"
+            android:src="@drawable/gggunit"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="West African Gaboon Viper"
+            android:id="@+id/name"
+            android:layout_marginTop="21dp"
+            android:layout_below="@+id/picture"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Venomous"
+            android:id="@+id/danger"
+            android:layout_below="@+id/name"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Zimbabwe, Uganada, South Africa, South Side, Zimbabwe, Uganada, South Africa, South Side"
+            android:id="@+id/location"
+            android:layout_below="@+id/textView6"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="19dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Location:"
+            android:id="@+id/textView6"
+            android:layout_marginTop="31dp"
+            android:layout_below="@+id/danger"
+            android:layout_alignLeft="@+id/textView9"
+            android:layout_alignStart="@+id/textView9" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Steven Steven Steven Steven Steven Steven Steven StevenSteven Steven Steven StevenSteven Steven Steven StevenSteven Steven Steven StevenSteven Steven Steven Steven"
+            android:id="@+id/predators"
+            android:layout_below="@+id/textView9"
+            android:layout_alignLeft="@+id/food"
+            android:layout_alignStart="@+id/food"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Predators"
+            android:id="@+id/textView9"
+            android:layout_marginTop="28dp"
+            android:layout_below="@+id/food"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="vShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane Shane"
+            android:id="@+id/disc"
+            android:layout_marginTop="18dp"
+            android:layout_below="@+id/textView13"
+            android:layout_alignLeft="@+id/location"
+            android:layout_alignStart="@+id/location" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Food"
+            android:id="@+id/textView11"
+            android:layout_below="@+id/disc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Shane Shane Shane Shane SShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane ShaneShane Shane Shane Shane Shanehane"
+            android:id="@+id/food"
+            android:layout_below="@+id/textView11"
+            android:layout_alignLeft="@+id/disc"
+            android:layout_alignStart="@+id/disc"
+            android:layout_marginTop="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="First Aid"
+            android:id="@+id/textView7"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/predators"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Do a quick dacne and then run around in circles"
+            android:id="@+id/firstaid"
+            android:layout_below="@+id/textView7"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Discription"
+            android:id="@+id/textView13"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/location"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</ScrollView>
