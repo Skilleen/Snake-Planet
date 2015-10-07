@@ -1,5 +1,6 @@
 package skilleen.snakeplanet;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -13,7 +14,7 @@ import skilleen.snakeplanet.Model.SnakeModel;
 import skilleen.snakeplanet.Tables.DBAdapter;
 
 
-public class HomeScreen extends ActionBarActivity {
+public class HomeScreen extends Activity {
 
 
     @Override

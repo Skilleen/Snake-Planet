@@ -37,7 +37,7 @@ public class SnakeAdapter extends ArrayAdapter<SnakeModel> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         //Get rowView from inflater
-        View rowView = inflater.inflate(R.layout.snake_layout, parent, false);
+        View rowView = inflater.inflate(R.layout.snake_listview, parent, false);
 
 
         TextView labelView = (TextView) rowView.findViewById(R.id.label);

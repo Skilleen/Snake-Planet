@@ -6,8 +6,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.FilterQueryProvider;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 import skilleen.snakeplanet.Model.SnakeModel;
@@ -16,29 +27,44 @@ import skilleen.snakeplanet.Tables.DBAdapter;
 /**
  * Created by Scilleen on 9/21/2015.
  */
-public class SearchByName extends ListActivity {
+public class SearchByName extends ActionBarActivity {
 
     public Context ctx;
+    private DBAdapter dbHelper;
+    private SimpleCursorAdapter dataAdapter;
+    public static Cursor currentSnake;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_by_name);
-        //DBAdapter.DBHelper db = new DBAdapter.DBHelper(ctx);
-/*
+        /*
+        DBAdapter.DBHelper db = new DBAdapter.DBHelper(ctx);
+
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             ctx = this;
 
-            Cursor c = db.getWordMatches(query, null);*/
-            //SnakeModel snakemodel = new SnakeModel(2, R.drawable.capecobra,"Cape Cobra", "Venomous","Zimbabwe", "Straight Outta Cape Town", "Pizza","Alex", "gg");
-          //  long snakemodel_id = db.createSnake(snakemodel);
-           // ArrayList<SnakeModel> itemsArrayList = new ArrayList<>();
-          //  itemsArrayList.add(0,snakemodel);            //
-          //SnakeAdapter adapter = new SnakeAdaitemsArrayListter (this, c);
+            Cursor c = db.getWordMatches(query, null);
+            SnakeModel snakemodel = new SnakeModel(2, R.drawable.capecobra,"Cape Cobra", "Venomous","Zimbabwe", "Straight Outta Cape Town", "Pizza","Alex", "gg");
+            long snakemodel_id = db.createSnake(snakemodel);
+            ArrayList<SnakeModel> itemsArrayList = new ArrayList<>();
+            itemsArrayList.add(snakemodel);            //
+            SnakeAdapter adapter = new SnakeAdapter(this, itemsArrayList);
+            ListView listView = (ListView) findViewById(R.id.list);
+            listView.setAdapter(adapter);
+*/      dbHelper = new DBAdapter(this);
+        dbHelper.open();
+        //Clean all data
+        dbHelper.deleteAllSnakes();
+        //Add some data
+        dbHelper.insertSomeSnakes();
 
-            //2. setListAdapte  //        //  setListAdapte);
-      //  }
+        //Generate ListView from SQLite Database
+        displayListView();
+
+
     }
 
 
@@ -47,5 +73,76 @@ public class SearchByName extends ListActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home_screen, menu);
         return true;
+    }
+
+
+    private void displayListView() {
+
+
+        Cursor cursor = dbHelper.getSnakes();
+
+        // The desired columns to be bound
+        String[] columns = new String[] {
+                DBAdapter.SNAKE_PICTURE,
+                DBAdapter.SNAKE_NAME,
+        };
+
+        // the XML defined views which the data will be bound to
+        int[] to = new int[] {
+                R.id.snakeListImage,
+                R.id.label,
+        };
+
+        // create the adapter using the cursor pointing to the desired data
+        //as well as the layout information
+        dataAdapter = new SimpleCursorAdapter(
+                this, R.layout.snake_listview,
+                cursor,
+                columns,
+                to,
+                0);
+
+        ListView listView = (ListView) findViewById(R.id.listView1);
+        // Assign adapter to ListView
+        listView.setAdapter(dataAdapter);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> listView, View view,
+                                    int position, long id) {
+                // Get the cursor, positioned to the corresponding row in the result set
+                currentSnake = (Cursor) listView.getItemAtPosition(position);
+                Intent snakeLayout = new Intent(SearchByName.this, SnakeLayout.class);
+                startActivity(snakeLayout);
+
+
+            }
+        });
+
+        EditText myFilter = (EditText) findViewById(R.id.myFilter);
+        myFilter.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+                dataAdapter.getFilter().filter(s.toString());
+            }
+
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+                dataAdapter.getFilter().filter(s.toString());
+            }
+
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                dataAdapter.getFilter().filter(s.toString());
+            }
+        });
+
+        dataAdapter.setFilterQueryProvider(new FilterQueryProvider() {
+            public Cursor runQuery(CharSequence constraint) {
+                return dbHelper.fetchSnakesByName(constraint.toString());
+            }
+        });
+
     }
 }
