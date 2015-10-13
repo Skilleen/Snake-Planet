@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import skilleen.snakeplanet.Model.SnakeModel;
 import skilleen.snakeplanet.Tables.DBAdapter;
@@ -22,6 +23,7 @@ public class HomeScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         Button nameButton = (Button) findViewById(R.id.nameButton);
+        Button locationbutton = (Button) findViewById(R.id.locationButton);
         nameButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -30,6 +32,16 @@ public class HomeScreen extends Activity {
                 startActivity(nameActivity);
             }
         });
+        locationbutton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent locationActivity = new Intent(HomeScreen.this, MapsActivity.class);
+                startActivity(locationActivity);
+            }
+        });
+        ImageView logo = (ImageView) findViewById(R.id.logo);
+        logo.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
 

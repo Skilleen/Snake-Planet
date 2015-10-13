@@ -3,6 +3,7 @@ package skilleen.snakeplanet;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -31,24 +32,6 @@ public class SnakeLayout extends Activity {
 
   public void fillPage(){
       Cursor snake = SearchByName.currentSnake;
-      // The desired columns to be bound
-      /*
-      String[] columns = new String[] {
-              DBAdapter.SNAKE_PICTURE,
-              DBAdapter.SNAKE_NAME,
-      };
-
-      // the XML defined views which the data will be bound to
-      int[] to = new int[] {
-              R.id.snakeListImage,
-              R.id.label,
-      };
-      dataAdapter = new SimpleCursorAdapter(
-              this, R.layout.snake_listview,
-              snake,
-              columns,
-              to,
-              0);*/
       ImageView picture = (ImageView) findViewById(R.id.picture);
       TextView name = (TextView) findViewById(R.id.name);
       TextView danger = (TextView) findViewById(R.id.danger);
@@ -59,8 +42,12 @@ public class SnakeLayout extends Activity {
       TextView firstAid = (TextView) findViewById(R.id.firstaid);
 
       picture.setImageResource(snake.getInt(1));
+      picture.setScaleType(ImageView.ScaleType.FIT_XY);
       name.setText(snake.getString(2));
       danger.setText(snake.getString(3));
+      if(snake.getString(3).equals("Venomous") || snake.getString(3).equals("Highly Venomous")){
+          danger.setTextColor(Color.parseColor("#FFFF0E1A"));
+      }
       location.setText(snake.getString(4));
       disc.setText(snake.getString(5));
       food.setText(snake.getString(6));

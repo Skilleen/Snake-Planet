@@ -159,11 +159,11 @@ public class DBAdapter  {
     public void insertSomeSnakes() {
 
         SnakeModel snakemodel = new SnakeModel(2, R.drawable.capecobra,"Cape Cobra", "Highly Venomous","South Africa, Namibia, Botswana, Lesotho ",
-                "The Cape cobra is a medium sized species of cobra. Mature specimens typically are about 1.2 to 1.4 metres long. Cape cobras varies widely in coloration;" +
+                "The Cape Cobra(Naja nivea) is a medium sized species of cobra. Mature specimens typically are about 1.2 to 1.4 metres long. Cape cobras varies widely in coloration;" +
                         " it ranges from yellow through golden brown to dark brown and even black. In addition, individuals show a varying degree of black or pale stippling and blotches," +
                         " and although it has been stated that colour and marking are geographically related, it is also possible to observe virtually all colour varieties at one location",
-                "This species of cobra is a feeding generalist.[6] It feeds on a wide spectrum of prey, including other snakes, rodents, lizards, birds, and carrion.",
-                "Predators of Cape cobras include the honey badger (Ratel).[9] Other carnivorous mammals such as Meerkats and a few species of mongoose often prey on the Cape cobra and are its main predators;",
+                "This species of cobra is a feeding generalist. It feeds on a wide spectrum of prey, including other snakes, rodents, lizards, birds, and carrion.",
+                "Predators of Cape cobras include the honey badger, other carnivorous mammals such as Meerkats and a few species of mongoose often prey on the Cape cobra and are its main predators;",
                 "Immediately call for transportation to nearest emergency centre. Keep the victim calm and reassured. Allow him or her to lie flat and avoid as much movement as possible." +
                         " If possible, allow the bitten limb to rest at a level lower than the victim's heart.\n"+ "DO NOT cut or incise the bite site\n" +
                         "DO NOT apply ice to the bite site");
@@ -182,71 +182,5 @@ public class DBAdapter  {
     }
 
 }
-/*
-    public DBAdapter(Context ctx) {
-        this.context = ctx;
-        dbHelper = new DBHelper(context);
-        Log.d("DBAdapter: ", "DBAdapter Creating ..");
-    }
 
-    private SQLiteDatabase db;
-
-    public DBAdapter open(){
-        db=dbHelper.getWritableDatabase();
-        return this; }
-
-    // close the database
-    public void close(){
-        dbHelper.close();
-    }
-
-    private static String DATABASE_CREATE;
-    private static final int DATABASE_VERSION = 1;
-
-    public static class DBHelper extends SQLiteOpenHelper {
-
-        public DBHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-            Log.d("DBHelper :","DBHelper Creating .."); }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            Log.d("DB: ", "DB Creating ..");
-           // db.delete(DATABASE_TABLE, null,null);
-            DATABASE_CREATE= "create table "+DATABASE_TABLE+"("+SNAKE_ID+" INTEGER PRIMARY KEY," + SNAKE_PICTURE+" text not null" + SNAKE_NAME+" text not null" + SNAKE_DANGER+" text not null"
-                    + SNAKE_LOCATION+" text not null" + SNAKE_DISC+" text not null" + SNAKE_FOOD+" text not null" + SNAKE_PREDATORS+" text not null" + SNAKE_FIRSTAID+" text not null" + " )";
-            db.execSQL(DATABASE_CREATE); }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
-            onCreate(db);
-
-        }
-
-
-
-        public Cursor getWordMatches(String query, String[] columns) {
-            String selection = DATABASE_TABLE + " MATCH ?";
-            String[] selectionArgs = new String[] {query+"*"};
-
-            return query(selection, selectionArgs, columns);
-        }
-
-        private Cursor query(String selection, String[] selectionArgs, String[] columns) {
-            SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-            builder.setTables(DATABASE_TABLE);
-            final DBHelper mDatabaseOpenHelper = this;
-            Cursor cursor = builder.query(mDatabaseOpenHelper.getReadableDatabase(),
-                    columns, selection, selectionArgs, null, null, null);
-
-            if (cursor == null) {
-                return null;
-            } else if (!cursor.moveToFirst()) {
-                cursor.close();
-                return null;
-            }
-            return cursor;
-        }
-    }*/
 
