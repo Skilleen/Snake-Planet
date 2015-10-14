@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import skilleen.snakeplanet.Model.SnakeModel;
 import skilleen.snakeplanet.R;
@@ -29,6 +30,7 @@ public class DBAdapter  {
     public static final String SNAKE_FIRSTAID ="firstAid";
     private static final String DATABASE_NAME = "thesnakedata.db";
     private static final String DATABASE_TABLE = "SnakeDetails";
+    public static ArrayList<SnakeModel> easternCanadaSnakes = new ArrayList();
     public static Context context;
     private static final String TAG = "SnakesDbAdapter";
     private DatabaseHelper mDbHelper;
@@ -178,7 +180,14 @@ public class DBAdapter  {
         createSnake(snakemodel4);
         createSnake(snakemodel1);
         createSnake(snakemodel5);
+        easternCanadaSnakes.add(snakemodel);
+        easternCanadaSnakes.add(snakemodel2);
+        easternCanadaSnakes.add(snakemodel3);
 
+    }
+
+    public ArrayList<SnakeModel> getEasternCanadaSnakeList(){
+        return easternCanadaSnakes;
     }
 
 }
