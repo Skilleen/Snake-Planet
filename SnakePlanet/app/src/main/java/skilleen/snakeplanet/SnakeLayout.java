@@ -19,6 +19,8 @@ import skilleen.snakeplanet.Tables.DBAdapter;
  * Created by Scilleen on 10/4/2015.
  */
 public class SnakeLayout extends Activity {
+
+    private Cursor snake;
     private DBAdapter dbHelper;
     private SimpleCursorAdapter dataAdapter;
     @Override
@@ -31,7 +33,14 @@ public class SnakeLayout extends Activity {
     }
 
   public void fillPage(){
-      Cursor snake = SearchByName.currentSnake;
+      Bundle b = getIntent().getExtras();
+      int snakeValue = b.getInt("currentSnake");
+      if(snakeValue == 0) {
+           snake = SearchByName.currentSnake;
+      }
+      else{
+           snake = SearchByLocation.currentSnake;
+      }
       ImageView picture = (ImageView) findViewById(R.id.picture);
       TextView name = (TextView) findViewById(R.id.name);
       TextView danger = (TextView) findViewById(R.id.danger);

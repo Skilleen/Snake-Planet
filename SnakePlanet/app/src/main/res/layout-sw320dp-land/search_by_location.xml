@@ -3,12 +3,8 @@
     android:layout_width="fill_parent" android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <EditText android:id="@+id/myFilter" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:ems="10"
-        android:hint="Snake Name">
-    </EditText>
 
-    <ListView android:id="@+id/nameList" android:layout_width="fill_parent"
+    <ListView android:id="@+id/locationList" android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
 </LinearLayout>

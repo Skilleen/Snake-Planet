@@ -17,20 +17,19 @@ import skilleen.snakeplanet.R;
 /**
  * Created by Scilleen on 9/24/2015.
  */
-public class DBAdapter  {
+public class DBAdapter {
 
-    public static final String SNAKE_ID ="_id";
-    public static final String SNAKE_PICTURE ="picture";
-    public static final String SNAKE_NAME ="name";
-    public static final String SNAKE_DANGER ="danger";
-    public static final String SNAKE_LOCATION ="location";
-    public static final String SNAKE_DISC ="disc";
-    public static final String SNAKE_FOOD ="food";
-    public static final String SNAKE_PREDATORS ="predators";
-    public static final String SNAKE_FIRSTAID ="firstAid";
+    public static final String SNAKE_ID = "_id";
+    public static final String SNAKE_PICTURE = "picture";
+    public static final String SNAKE_NAME = "name";
+    public static final String SNAKE_DANGER = "danger";
+    public static final String SNAKE_LOCATION = "location";
+    public static final String SNAKE_DISC = "disc";
+    public static final String SNAKE_FOOD = "food";
+    public static final String SNAKE_PREDATORS = "predators";
+    public static final String SNAKE_FIRSTAID = "firstAid";
     private static final String DATABASE_NAME = "thesnakedata.db";
     private static final String DATABASE_TABLE = "SnakeDetails";
-    public static ArrayList<SnakeModel> easternCanadaSnakes = new ArrayList();
     public static Context context;
     private static final String TAG = "SnakesDbAdapter";
     private DatabaseHelper mDbHelper;
@@ -51,7 +50,7 @@ public class DBAdapter  {
                     SNAKE_DISC + "," +
                     SNAKE_FOOD + "," +
                     SNAKE_PREDATORS + "," +
-                    SNAKE_FIRSTAID  +" );";
+                    SNAKE_FIRSTAID + " );";
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -116,7 +115,7 @@ public class DBAdapter  {
     public boolean deleteAllSnakes() {
 
         int doneDelete = 0;
-        doneDelete = mDb.delete(DATABASE_TABLE, null , null);
+        doneDelete = mDb.delete(DATABASE_TABLE, null, null);
         Log.w(TAG, Integer.toString(doneDelete));
         return doneDelete > 0;
 
@@ -125,14 +124,13 @@ public class DBAdapter  {
     public Cursor fetchSnakesByName(String inputText) {
         Log.w(TAG, inputText);
         Cursor mCursor = null;
-        if (inputText == null  ||  inputText.length () == 0)  {
-            mCursor = mDb.query(DATABASE_TABLE, new String[] {SNAKE_ID,
+        if (inputText == null || inputText.length() == 0) {
+            mCursor = mDb.query(DATABASE_TABLE, new String[]{SNAKE_ID,
                             SNAKE_PICTURE, SNAKE_NAME, SNAKE_DANGER, SNAKE_LOCATION, SNAKE_DISC, SNAKE_FOOD, SNAKE_PREDATORS, SNAKE_FIRSTAID},
                     null, null, null, null, null);
 
-        }
-        else {
-            mCursor = mDb.query(true, DATABASE_TABLE, new String[] {SNAKE_ID,
+        } else {
+            mCursor = mDb.query(true, DATABASE_TABLE, new String[]{SNAKE_ID,
                             SNAKE_PICTURE, SNAKE_NAME, SNAKE_DANGER, SNAKE_LOCATION, SNAKE_DISC, SNAKE_FOOD, SNAKE_PREDATORS, SNAKE_FIRSTAID},
                     SNAKE_NAME + " like '%" + inputText + "%'", null,
                     null, null, null, null);
@@ -144,10 +142,23 @@ public class DBAdapter  {
 
     }
 
+    public Cursor fetchSnakesByLocation(String locationText) {
+        Log.w(TAG, locationText);
+        Cursor mCursor = null;
+        mCursor = mDb.query(true, DATABASE_TABLE, new String[]{SNAKE_ID,
+                        SNAKE_PICTURE, SNAKE_NAME, SNAKE_DANGER, SNAKE_LOCATION, SNAKE_DISC, SNAKE_FOOD, SNAKE_PREDATORS, SNAKE_FIRSTAID},
+                SNAKE_LOCATION + " like '%" + locationText + "%'", null,
+                null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
     public Cursor getSnakes() {
 
         Cursor mCursor;
-        mCursor = mDb.query(true, DATABASE_TABLE, new String[] {SNAKE_ID,
+        mCursor = mDb.query(true, DATABASE_TABLE, new String[]{SNAKE_ID,
                         SNAKE_PICTURE, SNAKE_NAME, SNAKE_DANGER, SNAKE_LOCATION, SNAKE_DISC, SNAKE_FOOD, SNAKE_PREDATORS, SNAKE_FIRSTAID},
                 SNAKE_NAME + " like '%" + "swag" + "%'", null,
                 null, null, null, null);
@@ -160,36 +171,29 @@ public class DBAdapter  {
 
     public void insertSomeSnakes() {
 
-        SnakeModel snakemodel = new SnakeModel(2, R.drawable.capecobra,"Cape Cobra", "Highly Venomous","South Africa, Namibia, Botswana, Lesotho ",
+        SnakeModel snakemodel = new SnakeModel(2, R.drawable.capecobra, "Cape Cobra", "Highly Venomous", "South Africa, Namibia, Botswana, Lesotho ",
                 "The Cape Cobra(Naja nivea) is a medium sized species of cobra. Mature specimens typically are about 1.2 to 1.4 metres long. Cape cobras varies widely in coloration;" +
                         " it ranges from yellow through golden brown to dark brown and even black. In addition, individuals show a varying degree of black or pale stippling and blotches," +
                         " and although it has been stated that colour and marking are geographically related, it is also possible to observe virtually all colour varieties at one location",
                 "This species of cobra is a feeding generalist. It feeds on a wide spectrum of prey, including other snakes, rodents, lizards, birds, and carrion.",
                 "Predators of Cape cobras include the honey badger, other carnivorous mammals such as Meerkats and a few species of mongoose often prey on the Cape cobra and are its main predators;",
                 "Immediately call for transportation to nearest emergency centre. Keep the victim calm and reassured. Allow him or her to lie flat and avoid as much movement as possible." +
-                        " If possible, allow the bitten limb to rest at a level lower than the victim's heart.\n"+ "DO NOT cut or incise the bite site\n" +
+                        " If possible, allow the bitten limb to rest at a level lower than the victim's heart.\n" + "DO NOT cut or incise the bite site\n" +
                         "DO NOT apply ice to the bite site");
-        SnakeModel snakemodel1 = new SnakeModel(3, R.drawable.blackmamba,"Black Mamba", "Venomous","Zimbabwe", "Straight Outta Cape Town", "Pizza","Alex", "gg");
-        SnakeModel snakemodel2 = new SnakeModel(4, R.drawable.blueracer,"Blue Racer", "Venomous","Zimbabwe", "Straight Outta Cape Town", "Pizza","Alex", "gg");
-        SnakeModel snakemodel3 = new SnakeModel(5, R.drawable.gaboonviper,"Gaboon Viper", "Venomous","Zimbabwe", "Straight Outta Cape Town", "Pizza","Alex", "gg");
-        SnakeModel snakemodel4 = new SnakeModel(6, R.drawable.kingcobra,"King Cobra", "Venomous","Zimbabwe", "Straight Outta Cape Town", "Pizza","Alex", "gg");
-        SnakeModel snakemodel5 = new SnakeModel(7, R.drawable.pitviper,"Pit Viper", "Venomous","Zimbabwe", "Straight Outta Cape Town", "Pizza","Alex", "gg");
+        SnakeModel snakemodel1 = new SnakeModel(3, R.drawable.blackmamba, "Black Mamba", "Venomous", "Eastern Canada, shane", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
+        SnakeModel snakemodel2 = new SnakeModel(4, R.drawable.blueracer, "Blue Racer", "Venomous", "Eastern Canad, hello", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
+        SnakeModel snakemodel3 = new SnakeModel(5, R.drawable.gaboonviper, "Gaboon Viper", "Venomous", "Eastern Canada, swag", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
+        SnakeModel snakemodel4 = new SnakeModel(6, R.drawable.kingcobra, "King Cobra", "Venomous", "Zimbabwe", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
+        SnakeModel snakemodel5 = new SnakeModel(7, R.drawable.pitviper, "Pit Viper", "Venomous", "Zimbabwe", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
         createSnake(snakemodel);
         createSnake(snakemodel2);
         createSnake(snakemodel3);
         createSnake(snakemodel4);
         createSnake(snakemodel1);
         createSnake(snakemodel5);
-        easternCanadaSnakes.add(snakemodel);
-        easternCanadaSnakes.add(snakemodel2);
-        easternCanadaSnakes.add(snakemodel3);
 
     }
-
-    public ArrayList<SnakeModel> getEasternCanadaSnakeList(){
-        return easternCanadaSnakes;
-    }
-
 }
+
 
 

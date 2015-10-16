@@ -2,9 +2,16 @@ package skilleen.snakeplanet;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -28,30 +35,65 @@ public class SearchByLocation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_by_name);
-        String newString;
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if(extras == null) {
-                newString= null;
-            } else {
-                newString= extras.getString("STRING_I_NEED");
-            }
-        } else {
-            newString= (String) savedInstanceState.getSerializable("STRING_I_NEED");
-        }
+        setContentView(R.layout.search_by_location);
         dbHelper = new DBAdapter(this);
         dbHelper.open();
         //Clean all data
-      //  if(newString.equals("STRING_I_NEED")) {
-            ArrayList<SnakeModel> easternCanadaSnakes = new ArrayList();
-            snakeListForCurrentRegion = dbHelper.getEasternCanadaSnakeList();
-            SnakeAdapter adapter = new SnakeAdapter(this, snakeListForCurrentRegion);
-            ListView listView = (ListView) findViewById(R.id.listView1);
-            listView.setAdapter(adapter);
-        //}
+        dbHelper.deleteAllSnakes();
+        //Add some data
+        dbHelper.insertSomeSnakes();
+
         //Generate ListView from SQLite Database
-       // displayListView();
+        displayListView();
+
+    }
+
+    private void displayListView() {
+
+
+        Cursor cursor = dbHelper.fetchSnakesByLocation("Eastern Canada");
+
+        // The desired columns to be bound
+        String[] columns = new String[] {
+                DBAdapter.SNAKE_PICTURE,
+                DBAdapter.SNAKE_NAME,
+        };
+
+        // the XML defined views which the data will be bound to
+        int[] to = new int[] {
+                R.id.snakeListImage,
+                R.id.label,
+        };
+
+        // create the adapter using the cursor pointing to the desired data
+        //as well as the layout information
+        dataAdapter = new SimpleCursorAdapter(
+                this, R.layout.snake_listview,
+                cursor,
+                columns,
+                to,
+                0);
+
+        ListView listView = (ListView) findViewById(R.id.locationList);
+        // Assign adapter to ListView
+        listView.setAdapter(dataAdapter);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> listView, View view,
+                                    int position, long id) {
+                // Get the cursor, positioned to the corresponding row in the result set
+                currentSnake = (Cursor) listView.getItemAtPosition(position);
+                Intent snakeLayout = new Intent(SearchByLocation.this, SnakeLayout.class);
+                Bundle b = new Bundle();
+                b.putInt("currentSnake", 1); //1 for location
+                snakeLayout.putExtras(b);
+                startActivity(snakeLayout);
+
+
+            }
+        });
 
 
     }

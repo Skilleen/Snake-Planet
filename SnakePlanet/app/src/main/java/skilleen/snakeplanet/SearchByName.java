@@ -38,23 +38,7 @@ public class SearchByName extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_by_name);
-        /*
-        DBAdapter.DBHelper db = new DBAdapter.DBHelper(ctx);
-
-        Intent intent = getIntent();
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            ctx = this;
-
-            Cursor c = db.getWordMatches(query, null);
-            SnakeModel snakemodel = new SnakeModel(2, R.drawable.capecobra,"Cape Cobra", "Venomous","Zimbabwe", "Straight Outta Cape Town", "Pizza","Alex", "gg");
-            long snakemodel_id = db.createSnake(snakemodel);
-            ArrayList<SnakeModel> itemsArrayList = new ArrayList<>();
-            itemsArrayList.add(snakemodel);            //
-            SnakeAdapter adapter = new SnakeAdapter(this, itemsArrayList);
-            ListView listView = (ListView) findViewById(R.id.list);
-            listView.setAdapter(adapter);
-*/      dbHelper = new DBAdapter(this);
+        dbHelper = new DBAdapter(this);
         dbHelper.open();
         //Clean all data
         dbHelper.deleteAllSnakes();
@@ -102,7 +86,7 @@ public class SearchByName extends ActionBarActivity {
                 to,
                 0);
 
-        ListView listView = (ListView) findViewById(R.id.listView1);
+        ListView listView = (ListView) findViewById(R.id.nameList);
         // Assign adapter to ListView
         listView.setAdapter(dataAdapter);
 
@@ -114,6 +98,9 @@ public class SearchByName extends ActionBarActivity {
                 // Get the cursor, positioned to the corresponding row in the result set
                 currentSnake = (Cursor) listView.getItemAtPosition(position);
                 Intent snakeLayout = new Intent(SearchByName.this, SnakeLayout.class);
+                Bundle b = new Bundle();
+                b.putInt("currentSnake", 0); //1 for location
+                snakeLayout.putExtras(b);
                 startActivity(snakeLayout);
 
 
