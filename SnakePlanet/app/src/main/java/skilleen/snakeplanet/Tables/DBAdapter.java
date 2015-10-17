@@ -183,14 +183,19 @@ public class DBAdapter {
         SnakeModel snakemodel1 = new SnakeModel(3, R.drawable.blackmamba, "Black Mamba", "Venomous", "Eastern Canada, shane", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
         SnakeModel snakemodel2 = new SnakeModel(4, R.drawable.blueracer, "Blue Racer", "Venomous", "Eastern Canad, hello", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
         SnakeModel snakemodel3 = new SnakeModel(5, R.drawable.gaboonviper, "Gaboon Viper", "Venomous", "Eastern Canada, swag", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
-        SnakeModel snakemodel4 = new SnakeModel(6, R.drawable.kingcobra, "King Cobra", "Venomous", "Zimbabwe", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
+        SnakeModel snakemodel4 = new SnakeModel(6, R.drawable.kingcobra, "King Cobra", "Venomous", "Western Canada", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
         SnakeModel snakemodel5 = new SnakeModel(7, R.drawable.pitviper, "Pit Viper", "Venomous", "Zimbabwe", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
+        SnakeModel snakemodel6 = new SnakeModel(8, R.drawable.commongartersnake, "Common Garter Snake", "Harmless", "Eastern Canada, Eastern United States, Western Canada", "Common garter snakes are thin snakes." +
+                " None grows over about 4 ft (1.2 m) long, and most stay smaller. Most have longitudinal stripes in many different colors. Common garter snakes come in a wide range of colors including: green, blue, yellow, gold, red, orange, brown, and black",
+                "Toads, frogs, slugs, and worms, they will eat almost anything that they can overpower.", "Because of their small size, garter snakes have many predators, including hawks," +
+                " crows, bears, bullfrogs, snapping turtles, foxes, squirrels and raccoons", "N/A");
         createSnake(snakemodel);
         createSnake(snakemodel2);
         createSnake(snakemodel3);
         createSnake(snakemodel4);
         createSnake(snakemodel1);
         createSnake(snakemodel5);
+        createSnake(snakemodel6);
 
     }
 }

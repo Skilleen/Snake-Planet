@@ -50,8 +50,9 @@ public class SearchByLocation extends AppCompatActivity {
 
     private void displayListView() {
 
-
-        Cursor cursor = dbHelper.fetchSnakesByLocation("Eastern Canada");
+        Bundle b = getIntent().getExtras();
+        String country = b.getString("country");
+        Cursor cursor = dbHelper.fetchSnakesByLocation(country);
 
         // The desired columns to be bound
         String[] columns = new String[] {
