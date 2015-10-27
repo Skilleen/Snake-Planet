@@ -1,17 +1,12 @@
 package skilleen.snakeplanet;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -41,8 +36,8 @@ public class SearchByLocation extends AppCompatActivity {
         //Clean all data
         dbHelper.deleteAllSnakes();
         //Add some data
-        dbHelper.insertSomeSnakes();
-
+        PopulateDB fillDatabase = new PopulateDB();
+        fillDatabase.populate(this);
         //Generate ListView from SQLite Database
         displayListView();
 

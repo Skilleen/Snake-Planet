@@ -15,7 +15,7 @@ import skilleen.snakeplanet.Model.SnakeModel;
 /**
  * Created by Scilleen on 9/30/2015.
  */
-
+//Ended up not using this adapter.
 public class SnakeAdapter extends ArrayAdapter<SnakeModel> {
 
     private final Context context;

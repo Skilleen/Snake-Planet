@@ -39,13 +39,7 @@
         </activity>
         <activity android:name=".SearchByLocation" >
         </activity>
-        <activity android:name=".SearchBySpecies" >
-        </activity>
         <activity android:name=".SnakeLayout" >
-        </activity>
-        <activity
-            android:name=".SearchActivity"
-            android:label="@string/title_activity_search" >
         </activity>
 
         <meta-data

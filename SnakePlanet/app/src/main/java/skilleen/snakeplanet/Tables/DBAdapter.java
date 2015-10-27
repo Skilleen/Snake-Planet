@@ -169,35 +169,6 @@ public class DBAdapter {
         return mCursor;
     }
 
-    public void insertSomeSnakes() {
-
-        SnakeModel snakemodel = new SnakeModel(2, R.drawable.capecobra, "Cape Cobra", "Highly Venomous", "South Africa, Namibia, Botswana, Lesotho ",
-                "The Cape Cobra(Naja nivea) is a medium sized species of cobra. Mature specimens typically are about 1.2 to 1.4 metres long. Cape cobras varies widely in coloration;" +
-                        " it ranges from yellow through golden brown to dark brown and even black. In addition, individuals show a varying degree of black or pale stippling and blotches," +
-                        " and although it has been stated that colour and marking are geographically related, it is also possible to observe virtually all colour varieties at one location",
-                "This species of cobra is a feeding generalist. It feeds on a wide spectrum of prey, including other snakes, rodents, lizards, birds, and carrion.",
-                "Predators of Cape cobras include the honey badger, other carnivorous mammals such as Meerkats and a few species of mongoose often prey on the Cape cobra and are its main predators;",
-                "Immediately call for transportation to nearest emergency centre. Keep the victim calm and reassured. Allow him or her to lie flat and avoid as much movement as possible." +
-                        " If possible, allow the bitten limb to rest at a level lower than the victim's heart.\n" + "DO NOT cut or incise the bite site\n" +
-                        "DO NOT apply ice to the bite site");
-        SnakeModel snakemodel1 = new SnakeModel(3, R.drawable.blackmamba, "Black Mamba", "Venomous", "Eastern Canada, shane", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
-        SnakeModel snakemodel2 = new SnakeModel(4, R.drawable.blueracer, "Blue Racer", "Venomous", "Eastern Canad, hello", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
-        SnakeModel snakemodel3 = new SnakeModel(5, R.drawable.gaboonviper, "Gaboon Viper", "Venomous", "Eastern Canada, swag", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
-        SnakeModel snakemodel4 = new SnakeModel(6, R.drawable.kingcobra, "King Cobra", "Venomous", "Western Canada", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
-        SnakeModel snakemodel5 = new SnakeModel(7, R.drawable.pitviper, "Pit Viper", "Venomous", "Zimbabwe", "Straight Outta Cape Town", "Pizza", "Alex", "gg");
-        SnakeModel snakemodel6 = new SnakeModel(8, R.drawable.commongartersnake, "Common Garter Snake", "Harmless", "Eastern Canada, Eastern United States, Western Canada", "Common garter snakes are thin snakes." +
-                " None grows over about 4 ft (1.2 m) long, and most stay smaller. Most have longitudinal stripes in many different colors. Common garter snakes come in a wide range of colors including: green, blue, yellow, gold, red, orange, brown, and black",
-                "Toads, frogs, slugs, and worms, they will eat almost anything that they can overpower.", "Because of their small size, garter snakes have many predators, including hawks," +
-                " crows, bears, bullfrogs, snapping turtles, foxes, squirrels and raccoons", "N/A");
-        createSnake(snakemodel);
-        createSnake(snakemodel2);
-        createSnake(snakemodel3);
-        createSnake(snakemodel4);
-        createSnake(snakemodel1);
-        createSnake(snakemodel5);
-        createSnake(snakemodel6);
-
-    }
 }
 
 

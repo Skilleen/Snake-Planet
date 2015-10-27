@@ -39,14 +39,6 @@
             android:layout_row="1"
             android:layout_column="0" />
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Species"
-            android:id="@+id/speciesButton"
-            android:layout_row="2"
-            android:layout_column="0" />
-
     </GridLayout>
 
     <TextView
@@ -67,7 +59,7 @@
 
     <ImageView
         android:layout_width="400dp"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:src="@drawable/snakeplanetlogogood"
         android:id="@+id/logo"
         android:layout_alignParentTop="true"

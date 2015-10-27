@@ -43,8 +43,8 @@ public class SearchByName extends ActionBarActivity {
         //Clean all data
         dbHelper.deleteAllSnakes();
         //Add some data
-        dbHelper.insertSomeSnakes();
-
+        PopulateDB fillDatabase = new PopulateDB();
+        fillDatabase.populate(this);
         //Generate ListView from SQLite Database
         displayListView();
 
